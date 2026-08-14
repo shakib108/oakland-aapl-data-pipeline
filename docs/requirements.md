@@ -52,3 +52,15 @@ For this project I will assume that the relevant stakeholder and consumer would 
 - Stock data is persisted in database and application attempts to keep it up to date
 - Display shows daily historical AAPL data, Latest Close, and Daily Change
 - Stored data is not lost between sessions
+
+## 9. Initial Technical Questions
+
+- Which API?
+- What data does it provide?
+- What data is relevant for the assumed stakeholder?
+- What is the behaviour of the API? e.g. is there occasional historical changes to the API data?
+- What ingestion strategy should be used?
+- Which data processing framework should be used? Distributed or in-memory computing?
+- How will the application be deployed?
+- What should be used to build the UI?
+- Which database technology should be used?
