@@ -68,3 +68,8 @@ I have chosen therefore to include the **Latest Close** and **Daily Change** val
 - How will the application be deployed?
 - What should be used to build the UI?
 - Which database technology should be used?
+
+## 10. Optional Enhancements
+
+- CI implementation
+- Graph visual of historical stock price data
