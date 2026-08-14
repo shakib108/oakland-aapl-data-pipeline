@@ -21,7 +21,8 @@ I have chosen therefore to include the **Latest Close** and **Daily Change** val
 - **FR5 - Liveliness:** Keep database up to date with available AAPL stock data in accordance with an established data ingestion policy 
 - **FR6 - Retrieval:** Retrieve stored data independently of source data API
 - **FR7 - Dashboard:** Provide a simple UI displaying the stored AAPL daily historical data
-- **FR8 - Statistics:** In addition to the historical data, display basic statistics: latest close and daily change. Due to this project not requiring live data, the daily change will be based on the Latest Close price
+- **FR8 - Refresh:** Allow users to manually refresh the data
+- **FR9 - Statistics:** In addition to the historical data, display basic statistics: latest close and daily change. Due to this project not requiring live data, the daily change will be based on the Latest Close price
 
 ## 4. Non-functional Requirements
 
