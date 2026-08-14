@@ -34,7 +34,7 @@ I have chosen therefore to include the **Latest Close** and **Daily Change** val
 
 ## 5. MVP Scope
 
-- Stock data API > ingestion > validation > transformation > database storage > dashboard
+The MVP will retrieve daily historical AAPL stock OHLCV data, validate the source data, transform to the established data schema, store this data in a database, and display it on a simple dashboard UI, which will display the historical data, Latest Close value, and Daily Change value as per the Latest Close price. The UI will allow users to manually refresh the data. The data will be ingested according to a data ingestion policy. 
 
 ## 6. Out of Scope
 
