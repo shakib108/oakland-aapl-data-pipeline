@@ -45,3 +45,10 @@ For this project I will assume that the relevant stakeholder and consumer would 
 - API is treated as the source of truth
 - A limited historical period is sufficient for MVP
 - Local database is sufficient
+
+## 8. Acceptance Criteria
+
+- Application pulls latest stock data from stock API 
+- Stock data is persisted in database and application attempts to keep it up to date
+- Display shows daily historical AAPL data, Latest Close, and Daily Change
+- Stored data is not lost between sessions
