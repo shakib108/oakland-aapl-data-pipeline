@@ -8,6 +8,10 @@ Build a simple application that ingests Apple (AAPL) stock data from a public AP
 
 For this project I will assume that the relevant stakeholder and consumer would be an **investment analyst**. This assumption has guided research about what the user would need in the application, and therefore guides the technical requirements for the project.
 
+An investment analyst would want to see the daily historical OHLCV data, as well as what price the stock last settled at, i.e. the 'Latest Close' price from the previous trading day. Most applications of the same nature also include the Daily Change value, representing the change in price for a stock from the previous day to current day. 
+
+I have chosen therefore to include the **Latest Close** and **Daily Change** values in the dashboard.
+
 ## 3. Functional Requirements
 
 - **FR1 - Ingestion:** Retrieve daily historical data for AAPL stock from a public API
@@ -17,7 +21,7 @@ For this project I will assume that the relevant stakeholder and consumer would 
 - **FR5 - Liveliness:** Keep database up to date with available AAPL stock data in accordance with an established data ingestion policy 
 - **FR6 - Retrieval:** Retrieve stored data independently of source data API
 - **FR7 - Dashboard:** Provide a simple UI displaying the stored AAPL daily historical data
-- **FR8 - Statistics:** In addition to the historical data, display basic statistics: latest close and daily change
+- **FR8 - Statistics:** In addition to the historical data, display basic statistics: latest close and daily change. Due to this project not requiring live data, the daily change will be based on the Latest Close price
 
 ## 4. Non-functional Requirements
 
