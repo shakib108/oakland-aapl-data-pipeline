@@ -84,5 +84,22 @@ These are values that need to be calculated. (API endpoints may exist, but I'm c
 ## 4. What is the behaviour of the API?
 
 
-#### Does the historical data get ammended?
+#### 4.1 Does the historical data get ammended?
 According to Twelve Data, prices can get adjusted as a result of corporate actions. (See [Twelve Data Support](https://support.twelvedata.com/en/articles/5609168-introduction-to-twelve-data)). This implies the need for some form of reconciliation method in the application
+
+
+## 5. Ingestion Strategy
+
+#### 5.1 Initial and Maximum Load
+The application should have a decent amount of daily historical OHCLV data to view. Therefore, there would need to be an **initial load** to populate the database. Considering the small scale of the project, I have decided to use the following values:
+
+- Initial Load = 1000 records
+- Maximum Load = 10,000 records
+
+#### 5.2 Standard Ingestion
+The Twelve Data API will be considered as the source of truth. As mentioned in **4.1**, prices can get adjusted retrospectively in the source data. This implies the application needs a reconciliation method. 
+
+I have decided that the application will ingest the **latest 30 records** from the source API. 30 is also the default output size of the endpoint. This will ensure the data up to the latest close price is ingested, and also update records in the last 30 days in case there were any ammendments in the source API, helping to keep the database in line with the API.
+
+#### 5.3 Gap Recovery
+If it is found that the most recent record is more than 30 days in the past, then the standard ingestion method will leave a gap in the data. To resolve this, if this kind of gap is found, then the application will ingest all records from the date of the most recent record, up to the current date.
