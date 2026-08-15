@@ -112,3 +112,10 @@ The size of the data being handled in this application is not of a significant s
 
 In-memory processing will be sufficient, and Python's Pandas library will perfectly do the job.
 
+## 7. UI Tools: Streamlit
+
+I have considered the three Python UI framework options: Streamlit, Plotly Dash, and Flask.
+
+Plotly Dash and Flask are more involved in their learning curve, so for the purposes of a simple UI in this project, I have chosen Streamlit as the python framework to build the UI in.
+
+
