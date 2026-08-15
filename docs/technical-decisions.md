@@ -59,3 +59,22 @@ The output format is a JSON response, for example:
     "status": "ok"
 }
 ```
+
+## What data is relevant for the consumer?
+
+Standard daily historical OHLCV data would be appropriate for an investment analyst. 
+
+#### OHLCV
+
+- `O`: Open - price of stock at the start of the period
+- `H`: High - maximum price of stock during the period
+- `L`: Low - minimum price of stock during the period
+- `C`: Close - price of stock at the end of the period
+- `V`: Volume - total amount of shares traded during the period
+
+#### Statistics
+
+- Latest Close - The price of a stock at the end of the most recent trading day
+- Daily Change - The absolute and percentage change of a stock's price compared to the previous trading day. For the purposes of this project, this is the value for the Latest Close price.
+
+These are values that need to be calculated. (API endpoints may exist, but I'm calculating to demonstrate transformation logic in the project)
