@@ -118,4 +118,16 @@ I have considered the three Python UI framework options: Streamlit, Plotly Dash,
 
 Plotly Dash and Flask are more involved in their learning curve, so for the purposes of a simple UI in this project, I have chosen Streamlit as the python framework to build the UI in.
 
+## 8. Deployment: Docker
 
+Oakland have given the options to deploy using either of:
+
+- Docker
+- Cloud deployment
+- Local deployment with instructions
+
+As this project is a small and simple one, cloud deployment would add unnecessary overhead to the development workload, so is not suitable.
+
+Local deployment with instructions can be very tricky sometimes, and sometimes even after following the instructions just does not work! To avoid complexity for the end user (and yourselves), I will not be doing this.
+
+I have chosen to use Docker, as the application can be quite easily spun up for your review.
