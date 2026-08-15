@@ -78,3 +78,10 @@ Standard daily historical OHLCV data would be appropriate for an investment anal
 - Daily Change - The absolute and percentage change of a stock's price compared to the previous trading day. For the purposes of this project, this is the value for the Latest Close price.
 
 These are values that need to be calculated. (API endpoints may exist, but I'm calculating to demonstrate transformation logic in the project)
+
+
+## What is the behaviour of the API?
+
+
+#### Does the historical data get ammended?
+According to Twelve Data, prices can get adjusted as a result of corporate actions. (See [Twelve Data Support](https://support.twelvedata.com/en/articles/5609168-introduction-to-twelve-data)). This implies the need for some form of reconciliation method in the application
