@@ -131,3 +131,9 @@ As this project is a small and simple one, cloud deployment would add unnecessar
 Local deployment with instructions can be very tricky sometimes, and sometimes even after following the instructions just does not work! To avoid complexity for the end user (and yourselves), I will not be doing this.
 
 I have chosen to use Docker, as the application can be quite easily spun up for your review.
+
+## 9. Database Technology: SQLite
+
+I have considered SQLite and Postgres. Postgres has many components and would add unnecessary complexity for the demonstration purposes for this project, as there is the server and connection strings etc.
+
+SQLite is quite simple and lightweight to use and can easily handle the amount of records the application will process.
