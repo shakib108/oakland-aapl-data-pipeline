@@ -31,6 +31,7 @@ I have chosen therefore to include the **Latest Close** and **Daily Change** val
 - **NFR3 - Reliability:** Ingestion handles simple API failures in a reasonable way, without corrupting stored data
 - **NFR4 - Security:** API credentials and sensitive info shall not be committed in repository
 - **NFR5 - Data Quality:** Invalid or incomplete source data etc will be marked before storing, and data shall be idempotent
+- **NFR6 - Logging:** Implement logging to ensure traceability of activity in the application
 
 ## 5. MVP Scope
 
