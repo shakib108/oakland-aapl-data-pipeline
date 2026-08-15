@@ -103,3 +103,12 @@ I have decided that the application will ingest the **latest 30 records** from t
 
 #### 5.3 Gap Recovery
 If it is found that the most recent record is more than 30 days in the past, then the standard ingestion method will leave a gap in the data. To resolve this, if this kind of gap is found, then the application will ingest all records from the date of the most recent record, up to the current date.
+
+
+## 6. Data Processing Technology: Pandas
+
+#### Distributed or in-memory processing?
+The size of the data being handled in this application is not of a significant size (10,000 max), therefore does not require distributed computing capabilities, such as provided by Spark. This would also add unneccessary complexity.
+
+In-memory processing will be sufficient, and Python's Pandas library will perfectly do the job.
+
