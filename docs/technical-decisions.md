@@ -1,6 +1,6 @@
 # Technical Questions and Decisions
 
-## Stock API : Twelve Data API
+## 1. Stock API : Twelve Data API
 
 Oakland have suggested Yahoo Finance for the stock API. I have also researched the Alpha Vantage and Twelve Data stock API's.
 
@@ -16,11 +16,11 @@ The Twelve Data API is also a comprehensive offering. The API offers access to a
 **Verdict: Twelve Data**
 
 
-## What data is provided in the API?
+## 2. What data is provided in the API?
 
 Twelve Data's API has a `/time_series` API endpoint. This endpoint provides historical OHCLV stock data for any financial instrument.
 
-Important parameters we can specify:
+#### 2.1 Important parameters we can specify:
 
 
 | Parameter | Type | Description |
@@ -33,7 +33,8 @@ Important parameters we can specify:
 | `timezone` | String | Timezone at which output datetime will be displayed |
 
 
-The output format is a JSON response, for example:
+#### 2.2 Output
+Output format is a JSON response, for example:
 
 ```
 {
@@ -60,11 +61,11 @@ The output format is a JSON response, for example:
 }
 ```
 
-## What data is relevant for the consumer?
+## 3. What data is relevant for the consumer?
 
 Standard daily historical OHLCV data would be appropriate for an investment analyst. 
 
-#### OHLCV
+#### 3.1 OHLCV
 
 - `O`: Open - price of stock at the start of the period
 - `H`: High - maximum price of stock during the period
@@ -72,7 +73,7 @@ Standard daily historical OHLCV data would be appropriate for an investment anal
 - `C`: Close - price of stock at the end of the period
 - `V`: Volume - total amount of shares traded during the period
 
-#### Statistics
+#### 3.2 Statistics
 
 - Latest Close - The price of a stock at the end of the most recent trading day
 - Daily Change - The absolute and percentage change of a stock's price compared to the previous trading day. For the purposes of this project, this is the value for the Latest Close price.
@@ -80,7 +81,7 @@ Standard daily historical OHLCV data would be appropriate for an investment anal
 These are values that need to be calculated. (API endpoints may exist, but I'm calculating to demonstrate transformation logic in the project)
 
 
-## What is the behaviour of the API?
+## 4. What is the behaviour of the API?
 
 
 #### Does the historical data get ammended?
