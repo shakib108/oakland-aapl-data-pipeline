@@ -1,10 +1,12 @@
 # Oakland Stock Data Pipeline
 
+Hi there! Thank you for taking the time to look through my project. I look forward to going through it with you on Monday :)
+
 ## Overview
 
 Take home project for Oakland Data Engineering Interview.
 
-Application to ingest AAPL stock data and display on a frontend
+Application to ingest AAPL stock data and display on a Web UI
 
 ## Architecture
 
@@ -43,7 +45,7 @@ The application is packaged in **Docker**. The SQLite database is created inside
 - Docker Desktop
 - A Twelve Data API Key (complete steps 1 and 2 at [Twelve Data API Quickstart Docs](https://twelvedata.com/docs/introduction/overview))
 
-## Usage
+### Usage
 
 ### 1. Clone the repository
 ```
@@ -96,16 +98,51 @@ http://localhost:8501
 
 ## Testing
 
-_TBD_
+Tests are written using **pytest** and cover the main pipeline functionality, including:
+
+* Data ingestion
+* Data validation
+* Data transformation
+* Database storage
+* Calculations and statistics
+
+Run the tests with:
+
+```bash
+python -m pytest
+```
+
+The tests can also be run inside the Docker container with:
+```
+docker run --rm --env-file .env oakland-aapl-pipeline python -m pytest
+```
+
 
 ## What Works
 
-_TBD_
+* Fetches Apple stock data from Twelve Data according to ingestion policy
+* Validates and transforms incoming data
+* Stores data in SQLite
+* Handles API failures and retries
+* Calculates latest close price and daily change
+* Displays data through a Streamlit dashboard
+* Runs in Docker
+
 
 ## Known Limitations
 
-_TBD_
+* SQLite data is not persisted between Docker containers.
+* The application currently supports Apple (AAPL) stock data only.
+* Twelve Data API limits can affect data refreshes.
+* The Streamlit UI is intentionally simple and designed for this project scope.
+* Tests do not accurately test the source code, due to some issues along the way
+
 
 ## Future Improvements
 
-_TBD_
+* Use PostgreSQL or another persistent database.
+* Support multiple stocks.
+* Add automated scheduled ingestion.
+* Improve the dashboard and data visualisations.
+* Add CI/CD for automated testing and deployment.
+* Add monitoring and alerting for pipeline failures.
