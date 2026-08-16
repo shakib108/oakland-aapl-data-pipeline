@@ -8,7 +8,33 @@ Application to ingest AAPL stock data and display on a frontend
 
 ## Architecture
 
-_TBD_
+The application is split into a few simple layers:
+
+```text
+Twelve Data API
+      ↓
+  Ingestion
+      ↓
+  Validation
+      ↓
+Transformation
+      ↓
+   SQLite
+      ↓
+  Streamlit UI
+```
+
+### Layers
+
+* **Ingestion** — Fetches Apple stock data from Twelve Data.
+* **Validation** — Checks the incoming data is valid and contains the required fields.
+* **Transformation** — Converts the data into the required schema and formats.
+* **Storage** — Stores the data in SQLite and handles updates and retention.
+* **Orchestration** — Coordinates the pipeline using `run.py`.
+* **Streamlit UI** — Displays the latest price, daily change and historical data.
+
+The application is packaged in **Docker**. The SQLite database is created inside the container and is intentionally not persisted using a Docker volume, to demonstrate it's features. API credentials are supplied through environment variables.
+
 
 ## Setup
 
