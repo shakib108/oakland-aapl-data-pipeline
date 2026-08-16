@@ -24,6 +24,9 @@ For the OHLCV values, the types are `NUMERIC` in the database as they have decim
 
 This uniquely identifies each stock observation for a trading day
 
+## Price Precision
+OHCL price values will be at 2 decimal places, as more than this would only be useful to a consumer doing complex computational analysis
+
 ## Derived Metrics
 
 `latest_close` is the `close` value of the most recent trading day. This will not be stored, and instead evaluated using the most recent record
