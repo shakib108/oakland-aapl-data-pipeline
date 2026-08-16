@@ -10,7 +10,7 @@ def test_ingestion_returns_api_data():
     mock_response.as_json.return_value = {
         "meta": {
             "symbol": "AAPL",
-            "interval": "1min",
+            "interval": "1day",
             "currency": "USD",
             "exchange_timezone": "America/New_York",
             "exchange": "NASDAQ",
