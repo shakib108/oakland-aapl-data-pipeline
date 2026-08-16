@@ -34,11 +34,7 @@ def test_ingestion_returns_api_data():
     mock_client.time_series.return_value = mock_response
 
     with patch("src.ingestion.TDClient", return_value=mock_client):
-        params = {
-            "outputsize": 1
-        }
-
-        result = fetch_stock_data(ticker="AAPL", **params)
+        result = fetch_stock_data()
 
     assert len(result) == 1
     assert result[0]["datetime"] == "2021-09-16 15:59:00"
@@ -51,7 +47,7 @@ def test_ingestion_handles_api_failure():
 
     with patch("src.ingestion.TDClient", return_value=mock_client):
         with pytest.raises(APIError):
-            fetch_stock_data("AAPL")
+            fetch_stock_data()
 
 
 def test_ingestion_handles_empty_response():
@@ -64,7 +60,7 @@ def test_ingestion_handles_empty_response():
     mock_client.time_series.return_value = mock_response
 
     with patch("src.ingestion.TDClient", return_value=mock_client):
-        result = fetch_stock_data("AAPL")
+        result = fetch_stock_data()
 
     assert result == []
         
