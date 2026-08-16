@@ -8,13 +8,17 @@ import sqlite3
 from src.config import DB_PATH
 
 
+def initialise_database():
+    raise NotImplementedError
+
+
 def get_connection():
     return sqlite3.connect(DB_PATH)
 
 
 def get_record_count():
-    return NotImplementedError
+    raise NotImplementedError
 
 
 def get_latest_trade_date():
-    return NotImplementedError
+    raise NotImplementedError
