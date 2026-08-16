@@ -49,12 +49,9 @@ def transform_stock_data(source_df, ticker=config.TICKER):
     ]
 
     for column in price_columns:
-        transformed_df[column] = transformed_df[column].apply(
-            lambda value: Decimal(str(value)).quantize(
-                PRICE_PRECISION,
-                rounding=ROUND_HALF_UP
-            )
-        )
+        transformed_df[column] = pd.to_numeric(
+            transformed_df[column]
+        ).round(2)
 
     # Convert volume to integer
     transformed_df["volume"] = pd.to_numeric(
