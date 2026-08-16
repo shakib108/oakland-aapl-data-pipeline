@@ -124,6 +124,39 @@ def delete_oldest_records(ticker=TICKER, records_to_delete=0):
         connection.close()
 
 
-def get_latest_trade_date():
-    raise NotImplementedError
+def get_latest_trade_date(ticker=TICKER):
+    connection = get_connection()
+
+    try:
+        cursor = connection.execute(
+            """
+            SELECT MAX(trade_date)
+            FROM stock_data
+            WHERE ticker = ?
+            """,
+            (ticker,)
+        )
+
+        latest_trade_date = cursor.fetchone()[0]
+
+        logger.info(
+            "Latest trade date for %s: %s",
+            ticker,
+            latest_trade_date
+        )
+
+        if latest_trade_date is None:
+            return None
+
+        return date.fromisoformat(latest_trade_date)
+
+    except Exception:
+        logger.exception(
+            "Failed to get latest trade date for %s",
+            ticker
+        )
+        raise
+
+    finally:
+        connection.close()
 

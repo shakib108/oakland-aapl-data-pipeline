@@ -56,19 +56,6 @@ def determine_ingestion_output_params(
             "outputsize": INITIAL_LOAD_SIZE
         }
 
-    # Database contains fewer than the initial target
-    
-        outputsize = INITIAL_LOAD_SIZE
-
-        logger.info(
-            "Database contains %s records, which is below the 1000 record initial load amount. Requesting %s additional records.",
-            record_count,
-            outputsize
-        )
-
-        return {
-            "outputsize": outputsize
-        }
 
     # Check whether there is a data gap
     if latest_trade_date is not None:
