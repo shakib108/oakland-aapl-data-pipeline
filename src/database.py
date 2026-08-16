@@ -5,7 +5,7 @@ Database util functions
 import logging
 import sqlite3
 
-from src.config import DB_PATH
+from src.config import DB_PATH, TICKER
 
 logger = logging.getLogger(__name__)
 
@@ -49,9 +49,81 @@ def initialise_database():
         connection.close()
 
 
-def get_record_count():
-    raise NotImplementedError
+def get_record_count(ticker=TICKER):
+    connection = get_connection()
+
+    try:
+        cursor = connection.execute(
+            """
+            SELECT COUNT(*)
+            FROM stock_data
+            WHERE ticker = ?
+            """,
+            (ticker,)
+        )
+
+        record_count = cursor.fetchone()[0]
+
+        logger.info(
+            "Found %s records for %s",
+            record_count,
+            ticker
+        )
+
+        return record_count
+
+    except Exception:
+        logger.exception(
+            "Failed to get record count for %s",
+            ticker
+        )
+        raise
+
+    finally:
+        connection.close()
+
+
+def delete_oldest_records(ticker=TICKER, records_to_delete=0):
+    if records_to_delete <= 0:
+        return
+
+    connection = get_connection()
+
+    try:
+        connection.execute(
+            """
+            DELETE FROM stock_data
+            WHERE rowid IN (
+                SELECT rowid
+                FROM stock_data
+                WHERE ticker = ?
+                ORDER BY trade_date ASC
+                LIMIT ?
+            )
+            """,
+            (ticker, records_to_delete)
+        )
+
+        connection.commit()
+
+        logger.info(
+            "Deleted %s oldest records for %s",
+            records_to_delete,
+            ticker
+        )
+
+    except Exception:
+        connection.rollback()
+        logger.exception(
+            "Failed to delete oldest records for %s",
+            ticker
+        )
+        raise
+
+    finally:
+        connection.close()
 
 
 def get_latest_trade_date():
     raise NotImplementedError
+

@@ -6,6 +6,7 @@ import time
 import logging
 from twelvedata import TDClient
 
+from src.ingestion_policy import determine_ingestion_output_params
 import src.config as config
 
 logger = logging.getLogger(__name__)
@@ -24,7 +25,7 @@ Fetch stock data from Twelve Data stock API.
 Default outputsize is 30
 """
 def fetch_stock_data(ticker=config.TICKER, interval=config.INTERVAL):
-    output_params = { "outputsize": 30 } # change to ingestion_policy.determine_ingestion_output_params() later
+    output_params = determine_ingestion_output_params()
 
     for attempt in range(0, MAX_RETRIES):
         try:

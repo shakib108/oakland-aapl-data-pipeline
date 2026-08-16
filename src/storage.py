@@ -8,6 +8,9 @@ import src.database as db
 logger = logging.getLogger(__name__)
 
 
+MAX_RECORDS = 10000
+
+
 def store_data(transformed_df):
     connection = db.get_connection()
 
@@ -56,3 +59,16 @@ def store_data(transformed_df):
 
     finally:
         connection.close()
+
+
+def enforce_retention():
+    record_count = db.get_record_count()
+
+    if record_count <= MAX_RECORDS:
+        return
+
+    records_to_delete = record_count - MAX_RECORDS
+
+    db.delete_oldest_records(
+        records_to_delete
+    )
