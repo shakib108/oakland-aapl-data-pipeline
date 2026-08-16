@@ -2,6 +2,7 @@ import logging
 
 from src.ingestion import fetch_stock_data
 from src.validation import validate_data
+from src.transformation import transform_stock_data
 
 logging.basicConfig(
     level=logging.INFO,
@@ -15,6 +16,9 @@ def main():
     source_df = fetch_stock_data().as_pandas()
     source_df = source_df.reset_index()
     is_valid = validate_data(source_df)
+    transformed_data = transform_stock_data(source_df)
+
+    print(transformed_data)
 
 
 

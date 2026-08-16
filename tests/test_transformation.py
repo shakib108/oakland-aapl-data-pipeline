@@ -6,7 +6,7 @@ from src.transformation import transform_data
 def valid_record():
     return {
         "ticker": "AAPL",
-        "date": "2021-09-16",
+        "trade_date": "2021-09-16",
         "open": "148.73500",
         "high": "148.86000",
         "low": "148.73000",
