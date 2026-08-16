@@ -14,4 +14,7 @@ if not TWELVE_DATA_API_KEY or TWELVE_DATA_API_KEY == "":
 TICKER = "AAPL"
 INTERVAL = "1day"
 
-DB_PATH = ""
+DB_PATH = os.getenv(
+    "DB_PATH",
+    "data/stocks.db"
+)
