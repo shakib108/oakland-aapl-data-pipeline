@@ -1,0 +1,5 @@
+pandas
+streamlit
+twelvedata
+python-dotenv
+pytest
