@@ -5,7 +5,7 @@ from src.validation import validate_data
 from src.transformation import transform_stock_data
 from src.database import initialise_database
 from src.storage import store_data, enforce_retention
-from src.ingestion_policy import determine_ingestion_output_params
+from src.queries import get_daily_change, get_latest_close
 
 logging.basicConfig(
     level=logging.INFO,
@@ -25,7 +25,11 @@ def main():
     store_data(transformed_df)
     enforce_retention()
 
-    print(transformed_df)
+    latest_close = get_latest_close()
+    daily_change = get_daily_change()
+
+    print(latest_close)
+    print(daily_change)
 
 
 
