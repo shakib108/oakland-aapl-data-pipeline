@@ -2,6 +2,7 @@
 Database util functions
 
 """
+from datetime import date
 import logging
 import sqlite3
 
