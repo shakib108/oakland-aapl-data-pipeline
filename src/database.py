@@ -5,6 +5,7 @@ Database util functions
 from datetime import date
 import logging
 import sqlite3
+import pandas as pd
 
 from src.config import DB_PATH, TICKER
 
@@ -161,3 +162,37 @@ def get_latest_trade_date(ticker=TICKER):
     finally:
         connection.close()
 
+
+def get_stock_data(ticker=TICKER, limit=200, offset=0):
+    connection = get_connection()
+
+    try:
+        return pd.read_sql_query(
+            """
+            SELECT
+                ticker,
+                trade_date,
+                open,
+                high,
+                low,
+                close,
+                volume
+            FROM stock_data
+            WHERE ticker = ?
+            ORDER BY trade_date DESC
+            LIMIT ?
+            OFFSET ?
+            """,
+            connection,
+            params=(ticker, limit, offset)
+        )
+
+    except Exception:
+        logger.exception(
+            "Failed to retrieve stock data for %s",
+            ticker
+        )
+        raise
+
+    finally:
+        connection.close()

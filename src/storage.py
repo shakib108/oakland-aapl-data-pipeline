@@ -15,7 +15,18 @@ def store_data(transformed_df):
     connection = db.get_connection()
 
     try:
-        records = transformed_df.to_records(index=False)
+        records = [
+            (
+                str(row.ticker),
+                row.trade_date,
+                float(row.open),
+                float(row.high),
+                float(row.low),
+                float(row.close),
+                int(row.volume)
+            )
+            for row in transformed_df.itertuples(index=False)
+        ]
 
         connection.executemany(
             """
